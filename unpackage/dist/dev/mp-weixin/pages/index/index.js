@@ -151,6 +151,7 @@ exports.default = void 0;
 //
 //
 var _default = {
+  name: "index",
   data: function data() {
     return {
       title: 'Hello'
