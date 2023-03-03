@@ -961,7 +961,7 @@ function processArgs(methodName, fromArgs) {
   var returnValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
   var keepFromArgs = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
   if (isPlainObject(fromArgs)) {
-    // 一般 api 的参数解析
+    // 一般 apis 的参数解析
     var toArgs = keepFromArgs === true ? fromArgs : {}; // returnValue 为 false 时，说明是格式化返回值，直接在返回值对象上修改赋值
     if (isFn(argsOption)) {
       argsOption = argsOption(fromArgs, toArgs) || {};
@@ -1010,13 +1010,13 @@ function wrapper(methodName, method) {
   if (hasOwn(protocols, methodName)) {
     var protocol = protocols[methodName];
     if (!protocol) {
-      // 暂不支持的 api
+      // 暂不支持的 apis
       return function () {
         console.error("Platform '\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F' does not support '".concat(methodName, "'."));
       };
     }
     return function (arg1, arg2) {
-      // 目前 api 最多两个参数
+      // 目前 apis 最多两个参数
       var options = protocol;
       if (isFn(protocol)) {
         options = protocol(arg1);
@@ -1033,7 +1033,7 @@ function wrapper(methodName, method) {
       }
       var returnValue = wx[methodName].apply(wx, args);
       if (isSyncApi(methodName)) {
-        // 同步 api
+        // 同步 apis
         return processReturnValue(methodName, returnValue, options.returnValue, isContextApi(methodName));
       }
       return returnValue;
@@ -1370,7 +1370,7 @@ function toSkip(obj) {
   var OB = '__ob__';
   var SKIP = '__v_skip';
   if (isObject(obj) && Object.isExtensible(obj)) {
-    // 避免被 @vue/composition-api 观测
+    // 避免被 @vue/composition-apis 观测
     Object.defineProperty(obj, OB, {
       configurable: true,
       enumerable: false,
@@ -7716,7 +7716,7 @@ var uid$2 = 0;
 /**
  * A watcher parses an expression, collects dependencies,
  * and fires callback when the expression value changes.
- * This is used for both the $watch() api and directives.
+ * This is used for both the $watch() apis and directives.
  */
 var Watcher = function Watcher (
   vm,
@@ -8978,7 +8978,7 @@ function cloneWithData(vm) {
     return ret
   }, ret);
 
-  // vue-composition-api
+  // vue-composition-apis
   var compositionApiState = vm.__composition_api_state__ || vm.__secret_vfa_state__;
   var rawBindings = compositionApiState && compositionApiState.rawBindings;
   if (rawBindings) {
