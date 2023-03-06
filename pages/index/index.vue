@@ -17,7 +17,9 @@ export default {
   },
   onLoad() {
   },
-  methods: {}
+  methods: {
+    getList(){}
+  }
 }
 </script>
 

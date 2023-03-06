@@ -13,4 +13,4 @@ function createStore() {
     })
 }
 
-return createStore();
+export default createStore();

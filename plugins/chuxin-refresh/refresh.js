@@ -3,22 +3,24 @@ class Refresh {
         this.page = 0;
         this.options = options;
 
-        this.params = null;
-        this.request = null;
+        // 保存用户传递的参数 和 请求方法
+        this.params = {};
+        this.request = function () {
+        };
     }
 
     /**
      * @author 初心
      * @desc 列表请求
      */
-    getList(params = {}) {
+    getList(params = this.params) {
         this.params = params;
-        return async (request) => {
-            this.request = request || function () {
-            };
+        return async (request = this.request) => {
+            this.request = request;
             return await this.query();
         }
     }
+
 
     /**
      * @author 初心
